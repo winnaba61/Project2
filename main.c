@@ -7,8 +7,8 @@
 struct stat stat1, stat2;
 struct tm *time1, *time2;
 
-void filestat1();
-void filestat2();
+void filestat1(const char *filename);
+void filestat2(const char *filename);
 void filetime1();
 void filetime2();
 void sizecmp();
@@ -62,7 +62,7 @@ void filetime1(){
 
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(){
-    time2=localtime(&stat1.st_mtime);
+    time2=localtime(&stat2.st_mtime);
     if(time2==NULL)
     {
         perror("localtime2");
