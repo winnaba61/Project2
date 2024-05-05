@@ -17,8 +17,8 @@ void datecmp();
 void timecmp();
 
 int main(){
-    const char *filename1="text1.txt";
-    const char *filename2="text2.txt";
+    const char *filename1="text1";
+    const char *filename2="text2";
     filestat1(filename1);
     filestat2(filename2);
     filetime1();
@@ -46,7 +46,7 @@ void filestat2(const char *filename){
     {
         perror("stat2");
     }
-    printf("파일 1의 정보를 가져옴\n");
+    printf("파일 2의 정보를 가져옴\n");
 }
 
 //파일 1의 시간 정보를 가져오는 함수 작성
