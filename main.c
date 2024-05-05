@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -36,7 +36,6 @@ void filestat1(const char *filename){
     {
         perror("stat1");
     }
-    printf("파일 1의 정보를 가져옴\n");
     return;
 }
 
@@ -46,7 +45,6 @@ void filestat2(const char *filename){
     {
         perror("stat2");
     }
-    printf("파일 2의 정보를 가져옴\n");
 }
 
 //파일 1의 시간 정보를 가져오는 함수 작성
@@ -56,7 +54,6 @@ void filetime1(){
     {
         perror("localtime1");
     }
-    printf("파일 1의 마지막 수정 시간: %s", asctime(time1));
     return;
 }
 
@@ -67,22 +64,23 @@ void filetime2(){
     {
         perror("localtime2");
     }
-    printf("파일 2의 마지막 수정 시간: %s", asctime(time2));
     return;
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
 void sizecmp(){
+    printf("size compare\n");
 	if( ((stat1.st_size) - (stat2.st_size)) > 0 )
-		printf("'text1.txt' is bigger than 'text2.txt'.\n");
+		printf("text1 is bigger\n");
 	else if( ((stat1.st_size) - (stat2.st_size)) < 0 )
-		printf("'text2.txt' is bigger than 'text2.txt'.\n");
+		printf("text2 is bigger\n");
 	else if( (stat1.st_size) - (stat2.st_size) == 0 )
 		printf("sizes are equal.\n");
 }
 
 //두 개의 파일 블락 수를 비교하는 함수 작성
 void blockcmp(){
+    printf("\nblock compare\n");
     blkcnt_t blkcnt1 = stat1.st_blocks;
     blkcnt_t blkcnt2 = stat2.st_blocks;
 
@@ -103,7 +101,7 @@ void blockcmp(){
 
 //두 개의 파일 수정 날짜를 비교하는 함수 작성
 void datecmp(){
-    printf("date compare\n");
+    printf("\ndate compare\n");
     //text1
     int day1 = localtime(&stat1.st_mtime)->tm_mday;
     int month1 = localtime(&stat1.st_mtime)->tm_mon;
@@ -128,7 +126,7 @@ void datecmp(){
             else if (day1 < day2)
                 printf("text1 is early\n");
             else
-                printf("same time\n");
+                printf("same date\n");
         }
     }
     printf("\n");
