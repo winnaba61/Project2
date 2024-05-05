@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -73,7 +73,12 @@ void filetime2(){
 
 //두 개의 파일 크기를 비교하는 함수 작성
 void sizecmp(){
-    
+	if( ((stat1.st_size) - (stat2.st_size)) > 0 )
+		printf("'text1.txt' is bigger than 'text2.txt'.\n");
+	else if( ((stat1.st_size) - (stat2.st_size)) < 0 )
+		printf("'text2.txt' is bigger than 'text2.txt'.\n");
+	else if( (stat1.st_size) - (stat2.st_size) == 0 )
+		printf("sizes are equal.\n");
 }
 
 //두 개의 파일 블락 수를 비교하는 함수 작성
